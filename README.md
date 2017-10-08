@@ -67,3 +67,5 @@ Training parameters are
 In addition, to avoid the over-training, instead of picking the last train model to evaluate the test dataset, when the losses  becomes mostly flat, I picked the model with highest accurancy on the validation dataset.
 
 ## Solution Approach
+
+## Test a Model on New Images
