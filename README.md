@@ -12,13 +12,13 @@ This project uses deep neural networks and convolutional neural networks to clas
 
 <img src="images/40.png" width="64" /> <img src="images/41.png" width="64" /> <img src="images/42.png" width="64" /> 
 
-This is a multi-class, single-image classification problem. 
+This is a multi-class, single-image classification problem. The dataset is available [here](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/5898cd6f_traffic-signs-data/traffic-signs-data.zip)
 
 * The size of training set is 34,799
 * The size of validatiaon set is 4,410
 * The size of test set is 12,630
 * The shape of a traffic sign image is (32, 32, 3)
-* The number of unique classes/labels in the data set is 43
+* The number of unique traffic signs (labels) is 43
 
 ## Architecture Overview
 The deep neural network architectures receives an image as input, transform it through a series of hidden layers (e.g Conv, max pooling, relu, full connected etc), and output a vector of logits. Then the logits will be used to measured the probability error in traffic sign classification with softmax and cross entropy.
@@ -28,18 +28,23 @@ My final model consisted of the following layers:
 | Layer         		|     Description	        					|
 |:---------------------:|:---------------------------------------------:|
 | Input         		| 32x32x3 image   							|
-| Convolution 5x5     	| 2x2 stride, valid padding, outputs 28x28xm 	|
+| Convolution 5x5     	| 2x2 stride, valid padding, outputs 28x28x12 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 14x14xm 				|
-| Convolution 5x5	    | 2x2 stride, valid padding, outputs 10x10xm    |
+| Max pooling	      	| 2x2 stride,  outputs 14x14x12 				|
+| Convolution 5x5	    | 2x2 stride, valid padding, outputs 10x10x20    |
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 5x5xm 				|
-| Convolution 1x1	    | 2x2 stride, valid padding, outputs 1x1xm    |
+| Max pooling	      	| 2x2 stride,  outputs 5x5x20 				|
 | RELU					|												|
-| Fully connected		| input m, output m        									|
+| Fully connected		| input 500, output 160        									|
 | RELU					|												|
 | Dropout				| 50%          									|
-| Fully connected		| input m, output m        									|
+| Fully connected		| input 160, output 100        									|
 | RELU					|												|
 | Dropout				| 50%         									|
-| Fully connected		| input m, output 43        									|
+| Fully connected		| input 100, output 43        									|
+
+With this neural network architecture, along with other optimization, **the accuracy rate on the test dataset is 96.4%**
+
+## Model Training and Optimization
+
+I am able to achieve the accuracy rate of 96.4% on test dataset and 97.9% on the validation dataset. The 
