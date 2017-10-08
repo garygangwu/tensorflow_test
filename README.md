@@ -2,15 +2,15 @@
 This project uses deep neural networks and convolutional neural networks to classify [German Traffic Signs](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset).
 
 ## German Traffic Signs Dataset
-<img src="images/0.png" width="64" /> <img src="images/1.png" width="64" /> <img src="images/2.png" width="64" /> <img src="images/3.png" width="64" /> <img src="images/4.png" width="64" /> <img src="images/5.png" width="64" /> <img src="images/6.png" width="64" /> <img src="images/7.png" width="64" /> <img src="images/8.png" width="64" /> <img src="images/9.png" width="64" />
+Label 00 - 09: <img src="images/0.png" width="64" /> <img src="images/1.png" width="64" /> <img src="images/2.png" width="64" /> <img src="images/3.png" width="64" /> <img src="images/4.png" width="64" /> <img src="images/5.png" width="64" /> <img src="images/6.png" width="64" /> <img src="images/7.png" width="64" /> <img src="images/8.png" width="64" /> <img src="images/9.png" width="64" />
 
-<img src="images/10.png" width="64" /> <img src="images/11.png" width="64" /> <img src="images/12.png" width="64" /> <img src="images/13.png" width="64" /> <img src="images/14.png" width="64" /> <img src="images/15.png" width="64" /> <img src="images/16.png" width="64" /> <img src="images/17.png" width="64" /> <img src="images/18.png" width="64" /> <img src="images/19.png" width="64" />
+Label 10 - 19: <img src="images/10.png" width="64" /> <img src="images/11.png" width="64" /> <img src="images/12.png" width="64" /> <img src="images/13.png" width="64" /> <img src="images/14.png" width="64" /> <img src="images/15.png" width="64" /> <img src="images/16.png" width="64" /> <img src="images/17.png" width="64" /> <img src="images/18.png" width="64" /> <img src="images/19.png" width="64" />
 
-<img src="images/20.png" width="64" /> <img src="images/21.png" width="64" /> <img src="images/22.png" width="64" /> <img src="images/23.png" width="64" /> <img src="images/24.png" width="64" /> <img src="images/25.png" width="64" /> <img src="images/26.png" width="64" /> <img src="images/27.png" width="64" /> <img src="images/28.png" width="64" /> <img src="images/29.png" width="64" />
+Label 20 - 29: <img src="images/20.png" width="64" /> <img src="images/21.png" width="64" /> <img src="images/22.png" width="64" /> <img src="images/23.png" width="64" /> <img src="images/24.png" width="64" /> <img src="images/25.png" width="64" /> <img src="images/26.png" width="64" /> <img src="images/27.png" width="64" /> <img src="images/28.png" width="64" /> <img src="images/29.png" width="64" />
 
-<img src="images/30.png" width="64" /> <img src="images/31.png" width="64" /> <img src="images/32.png" width="64" /> <img src="images/33.png" width="64" /> <img src="images/34.png" width="64" /> <img src="images/35.png" width="64" /> <img src="images/36.png" width="64" /> <img src="images/37.png" width="64" /> <img src="images/38.png" width="64" /> <img src="images/39.png" width="64" />
+Label 30 - 39: <img src="images/30.png" width="64" /> <img src="images/31.png" width="64" /> <img src="images/32.png" width="64" /> <img src="images/33.png" width="64" /> <img src="images/34.png" width="64" /> <img src="images/35.png" width="64" /> <img src="images/36.png" width="64" /> <img src="images/37.png" width="64" /> <img src="images/38.png" width="64" /> <img src="images/39.png" width="64" />
 
-<img src="images/40.png" width="64" /> <img src="images/41.png" width="64" /> <img src="images/42.png" width="64" /> 
+Label 40 - 42: <img src="images/40.png" width="64" /> <img src="images/41.png" width="64" /> <img src="images/42.png" width="64" /> 
 
 This is a multi-class, single-image classification problem. The dataset is available [here](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/5898cd6f_traffic-signs-data/traffic-signs-data.zip)
 
@@ -19,6 +19,10 @@ This is a multi-class, single-image classification problem. The dataset is avail
 * The size of test set is 12,630
 * The shape of a traffic sign image is (32, 32, 3)
 * The number of unique traffic signs (labels) is 43
+
+<img src="images/train_dataset.png.png" />
+<img src="images/valid_dataset.png.png" />
+<img src="images/test_dataset.png.png" />
 
 ## Architecture Overview
 The deep neural network architectures receives an image as input, transform it through a series of hidden layers (e.g Conv, max pooling, relu, full connected etc), and output a vector of logits. Then the logits will be used to measured the probability error in traffic sign classification with softmax and cross entropy.
@@ -46,16 +50,20 @@ My final model consisted of the following layers:
 With this neural network architecture, along with other optimization, **the accuracy rate on the test dataset is 96.4%**
 
 ## Model Training and Optimization
-
 I am able to achieve the accuracy rate of 96.4% on test dataset and 97.9% on the validation dataset. Below are the optimization approaches.
 
 | Layer         		|     Description	        					|
 |:---------------------:|:---------------------------------------------:|
-| Expanding training dataset | This image has shifted left, right, down, up, up-left, up-right, down-left, and down-right. So it adds 8x more training data |
-| Dropout | Applied 50% dropout rate on output of the two fully connected layers |
-| L2 Regularization | Applied regularization (beta 0.01) with weights and bias of the three fully connected layers |
+| Expanding training dataset | This image has been shifted left, right, down, up, up-left, up-right, down-left, and down-right. So it adds 8x more training data |
+| Dropout | Applies 50% dropout rate on output of the two fully connected layers |
+| L2 Regularization | Applies regularization (beta 0.01) with weights and bias of the three fully connected layers |
+| Loss Function | Computes softmax cross entropy between logits and labels |
 
 Training parameters are
-* Number of epoches: 30
+* Number of epoches: 20
 * Size of the training batch: 128
 * Learning rate: 0.001
+
+In addition, to avoid the over-training, instead of picking the last train model to evaluate the test dataset, when the losses  becomes mostly flat, I picked the model with highest accurancy on the validation dataset.
+
+## Solution Approach
