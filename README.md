@@ -47,4 +47,15 @@ With this neural network architecture, along with other optimization, **the accu
 
 ## Model Training and Optimization
 
-I am able to achieve the accuracy rate of 96.4% on test dataset and 97.9% on the validation dataset. The 
+I am able to achieve the accuracy rate of 96.4% on test dataset and 97.9% on the validation dataset. Below are the optimization approaches.
+
+| Layer         		|     Description	        					|
+|:---------------------:|:---------------------------------------------:|
+| Expanding training dataset | This image has shifted left, right, down, up, up-left, up-right, down-left, and down-right. So it adds 8x more training data |
+| Dropout | Applied 50% dropout rate on output of the two fully connected layers |
+| L2 Regularization | Applied regularization (beta 0.01) with weights and bias of the three fully connected layers |
+
+Training parameters are
+* Number of epoches: 30
+* Size of the training batch: 128
+* Learning rate: 0.001
