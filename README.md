@@ -72,9 +72,9 @@ Started from basic LeNet architecture. Here are the approaches adopted with accu
 
 |  | Adopted Approach | Description	 	| Test Accuracy |
 |:--:|:---------------------:|:---------------------------------------------:|:-----------:|
-| Step 1 | Basic LeNet | The same LeNet used for hand-writing image (28x28x1) detection | *86.1%* |
-| Step 2 | Expand the training set | Shift the images (left/right/up/down) for more training data | *91.6%* |
-| Step 3 | L2 Regularization / Dropout | Avoid the model to be overfitting during the training | *94.6%* |
+| Step 1 | Basic LeNet | The same LeNet used for hand-writing image (28x28x1) detection | *89.3%* |
+| Step 3 | L2 Regularization / Dropout | Avoid the model to be overfitting during the training | *93.4%* |
+| Step 2 | Expand the training set | Shift the images (left/right/up/down) for more training data | *95.0%* |
 | Step 4 | Increase numbers of neurals | LeNet was optimized for 28x28x1 images. Given the input images are 32x32x3, it may need more numbers of weights at each layer for better output quality | **96.4%** |
 
 Other approaches has also been evaluated as below. Although these approaches were tuned along with other optimizations including dropout, L2 Regularization, different numbers of neurals in the hidden layer. The final accurancy is still unable to beat the final version above. Therefore, they weren't been adopted. 
