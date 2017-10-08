@@ -47,7 +47,7 @@ My final model consisted of the following layers:
 | Dropout				| 50%         									|
 | Fully connected		| input 100, output 43        									|
 
-With this neural network architecture, along with other optimization, **the accuracy rate on the test dataset is able to achieve 96.4%**
+With this neural network architecture, along with other optimization, **the accuracy rate on the test dataset is able to achieve 96.5%**
 
 ## Model Training and Optimization
 I am able to achieve the accuracy rate of 96.4% on test dataset and 98% on the validation dataset. Below are the optimization approaches incorporated in the final version.
@@ -75,14 +75,14 @@ Started from basic LeNet architecture. Here are the approaches adopted with accu
 | Step 1 | Basic LeNet | The same LeNet used for hand-writing image (28x28x1) detection | *89.3%* |
 | Step 3 | L2 Regularization / Dropout | Avoid the model to be overfitting during the training | *93.4%* |
 | Step 2 | Expand the training set | Shift the images (left/right/up/down) for more training data | *95.0%* |
-| Step 4 | Increase numbers of neurals | LeNet was optimized for 28x28x1 images. Given the input images are 32x32x3, it may need more numbers of weights at each layer for better output quality | **96.4%** |
+| Step 4 | Increase numbers of neurals | LeNet was optimized for 28x28x1 images. Given the input images are 32x32x3, it may need more numbers of weights at each layer for better output quality | **96.5%** |
 
 Alternative optimization approaches has also been evaluated as below. Although these approaches were tuned along with other optimizations including dropout, L2 Regularization, different numbers of neurals in the hidden layer. The final accurancy is still unable to beat the final version above. Therefore, they weren't been adopted. 
 
 | Evaluated Approach but abandoned | Description	 	| Test Accuracy |
 |:----------------------:|:---------------------------------------------:|:-----------:|
-| Converted to Gray color space | Convert the RGB images (32x32x3) to grayscaled images (32x32x1). | *95.9%* |
-| Tune the YUV color space | Convert the RGB (32x32x3) to YUV color space (32x32x3) | *94.9%* |
+| Convert to Gray color space | Convert the RGB images (32x32x3) to grayscaled images (32x32x1). | *95.9%* |
+| Convert the YUV color space | Convert the RGB (32x32x3) to YUV color space (32x32x3) | *94.9%* |
 | Tune the batch size / learning rate | Increase the batch size or change learning rate, but none of them achieve obvioius accruancy rate improvement | N/A |
 
 ## Test a Model on New Images
