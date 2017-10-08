@@ -2,7 +2,7 @@
 This project uses deep neural networks and convolutional neural networks to classify [German Traffic Signs](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset).
 
 ## German Traffic Signs Dataset
-<img src="http://benchmark.ini.rub.de/Images/gtsrb/0.png" alt="Traffic Signs" /><img src="http://benchmark.ini.rub.de/Images/gtsrb/1.png" alt="Traffic Signs" /><img src="http://benchmark.ini.rub.de/Images/gtsrb/2.png" alt="Traffic Signs" /><img src="http://benchmark.ini.rub.de/Images/gtsrb/3.png" alt="Traffic Signs" /><img src="http://benchmark.ini.rub.de/Images/gtsrb/4.png" alt="Traffic Signs" /><img src="http://benchmark.ini.rub.de/Images/gtsrb/5.png" alt="Traffic Signs" /><img src="http://benchmark.ini.rub.de/Images/gtsrb/6.png" alt="Traffic Signs" /><img src="http://benchmark.ini.rub.de/Images/gtsrb/12.png" alt="Traffic Signs" /><img src="http://benchmark.ini.rub.de/Images/gtsrb/8.png" alt="Traffic Signs" /><img src="http://benchmark.ini.rub.de/Images/gtsrb/11.png" alt="Traffic Signs" />
+<img src="images/0.png" alt="Traffic Signs" /><img src="images/1.png" alt="Traffic Signs" /><img src="images/2.png" alt="Traffic Signs" />
 
 This is a multi-class, single-image classification problem. 
 
