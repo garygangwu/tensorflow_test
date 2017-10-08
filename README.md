@@ -20,9 +20,9 @@ This is a multi-class, single-image classification problem. The dataset is avail
 * The shape of a traffic sign image is (32, 32, 3)
 * The number of unique traffic signs (labels) is 43
 
-<img src="images/train_dataset.png.png" />
-<img src="images/valid_dataset.png.png" />
-<img src="images/test_dataset.png.png" />
+Below is the distrubtion of occurances of each image class in the training, validation and testing dataset. This can help to understand whether the dataset is uniform in terms of a baseline occurrence, and avoid potential pitfalls on biased distribution among different dataset
+
+<img src="images/train_dataset.png" width="400" /> <img src="images/valid_dataset.png" width="400" /> <img src="images/test_dataset.png" width="400" />
 
 ## Architecture Overview
 The deep neural network architectures receives an image as input, transform it through a series of hidden layers (e.g Conv, max pooling, relu, full connected etc), and output a vector of logits. Then the logits will be used to measured the probability error in traffic sign classification with softmax and cross entropy.
