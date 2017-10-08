@@ -4,7 +4,7 @@ This project uses deep neural networks and convolutional neural networks to clas
 ## German Traffic Signs Dataset
 <img src="images/0.png" width="64" /> <img src="images/1.png" width="64" /> <img src="images/2.png" width="64" /> <img src="images/3.png" width="64" /> <img src="images/4.png" width="64" /> <img src="images/5.png" width="64" /> <img src="images/6.png" width="64" /> <img src="images/7.png" width="64" /> <img src="images/8.png" width="64" /> <img src="images/9.png" width="64" />
 
-<img src="images/10.png" width="64" /><img src="images/11.png" width="64" /><img src="images/12.png" width="64" /><img src="images/13.png" width="64" /><img src="images/14.png" width="64" /><img src="images/15.png" width="64" /><img src="images/16.png" width="64" /><img src="images/17.png" width="64" /><img src="images/18.png" width="64" /><img src="images/19.png" width="64" />
+<img src="images/10.png" width="64" /> <img src="images/11.png" width="64" /> <img src="images/12.png" width="64" /> <img src="images/13.png" width="64" /> <img src="images/14.png" width="64" /> <img src="images/15.png" width="64" /> <img src="images/16.png" width="64" /> <img src="images/17.png" width="64" /> <img src="images/18.png" width="64" /> <img src="images/19.png" width="64" />
 
 <img src="images/20.png" width="64" /> <img src="images/21.png" width="64" /> <img src="images/22.png" width="64" /> <img src="images/23.png" width="64" /> <img src="images/24.png" width="64" /> <img src="images/25.png" width="64" /> <img src="images/26.png" width="64" /> <img src="images/27.png" width="64" /> <img src="images/28.png" width="64" /> <img src="images/29.png" width="64" />
 
