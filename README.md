@@ -77,7 +77,7 @@ Started from basic LeNet architecture. Here are the approaches adopted with accu
 | Step 2 | Expand the training set | Shift the images (left/right/up/down) for more training data | *95.0%* |
 | Step 4 | Increase numbers of neurals | LeNet was optimized for 28x28x1 images. Given the input images are 32x32x3, it may need more numbers of weights at each layer for better output quality | **96.4%** |
 
-Other approaches has also been evaluated as below. Although these approaches were tuned along with other optimizations including dropout, L2 Regularization, different numbers of neurals in the hidden layer. The final accurancy is still unable to beat the final version above. Therefore, they weren't been adopted. 
+Alternative optimization approaches has also been evaluated as below. Although these approaches were tuned along with other optimizations including dropout, L2 Regularization, different numbers of neurals in the hidden layer. The final accurancy is still unable to beat the final version above. Therefore, they weren't been adopted. 
 
 | Evaluated Approach but abandoned | Description	 	| Test Accuracy |
 |:----------------------:|:---------------------------------------------:|:-----------:|
