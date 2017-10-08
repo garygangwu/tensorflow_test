@@ -50,11 +50,11 @@ My final model consisted of the following layers:
 With this neural network architecture, along with other optimization, **the accuracy rate on the test dataset is 96.4%**
 
 ## Model Training and Optimization
-I am able to achieve the accuracy rate of 96.4% on test dataset and 97.9% on the validation dataset. Below are the optimization approaches.
+I am able to achieve the accuracy rate of 96.4% on test dataset and 98% on the validation dataset. Below are the optimization approaches.
 
 | Layer         		|     Description	        					|
 |:---------------------:|:---------------------------------------------:|
-| Expanding training dataset | This image has been shifted left, right, down, up, up-left, up-right, down-left, and down-right. So it adds 8x more training data |
+| Expanding training dataset | This image has been shifted the left, right, up, down direction with 1 and 2 pixels. So it adds 8x more training data |
 | Dropout | Applies 50% dropout rate on output of the two fully connected layers |
 | L2 Regularization | Applies regularization (beta 0.01) with weights and bias of the three fully connected layers |
 | Loss Function | Computes softmax cross entropy between logits and labels |
