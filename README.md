@@ -47,12 +47,12 @@ My final model consisted of the following layers:
 | Dropout				| 50%         									|
 | Fully connected		| input 100, output 43        									|
 
-With this neural network architecture, along with other optimization, **the accuracy rate on the test dataset is 96.4%**
+With this neural network architecture, along with other optimization, **the accuracy rate on the test dataset is able to achieve 96.4%**
 
 ## Model Training and Optimization
-I am able to achieve the accuracy rate of 96.4% on test dataset and 98% on the validation dataset. Below are the optimization approaches.
+I am able to achieve the accuracy rate of 96.4% on test dataset and 98% on the validation dataset. Below are the optimization approaches incorporated in the final version.
 
-| Layer         		|     Description	        					|
+| Approach         		|     Description	        					|
 |:---------------------:|:---------------------------------------------:|
 | Expanding training dataset | This image has been shifted the left, right, up, down direction with 1 and 2 pixels. So it adds 8x more training data |
 | Dropout | Applies 50% dropout rate on output of the two fully connected layers |
@@ -67,5 +67,23 @@ Training parameters are
 In addition, to avoid the over-training, instead of picking the last train model to evaluate the test dataset, when the losses  becomes mostly flat, I picked the model with highest accurancy on the validation dataset.
 
 ## Solution Approach
+
+Started from basic LeNet architecture. Here are the approaches adopted with accurancy being improved
+
+| Adopted Approach | Description	 	| Test Accuracy |
+|:---------------------:|:---------------------------------------------:|:-----------:|
+| Basic LeNet | The same LeNet used for hand-writing image (28x28x1) detection | 89% |
+| Dropout | Applies 50% dropout rate on output of the two fully connected layers | x% |
+| Expand the training set | Shift the images (left/right/up/down) for more training data | 89% |
+| L2 Regularization | Applies regularization (beta 0.01) with weights and bias of the three fully connected layers | x% |
+| Increase numbers of neurals | LeNet was optimized for 28x28x1 images. Given the input images are 32x32x3, it may need more numbers of weights at each layer for better output quality | 96.4% |
+
+Other approaches has also been evaluated as below. Although these approaches were tuned along with other optimizations including dropout, L2 Regularization, different numbers of neurals in the hidden layer. The final accurancy is still unable to beat the final version above. Therefore, they weren't been adopted. 
+
+| Evaluated Approach | Description	 	| Test Accuracy |
+|:----------------------:|:---------------------------------------------:|:-----------:|
+| Converted to Gray color space | Convert the RGB images (32x32x3) to grayscaled images (32x32x1). | 95.9% |
+| Tune the YUV color space | Convert the RGB (32x32x3) to YUV color space (32x32x1) | 94.9% |
+| Tune the batch size / learning rate | Increase the batch size or change learning rate, but none of them achieve obvioius accruancy rate improvement | N/A |
 
 ## Test a Model on New Images
