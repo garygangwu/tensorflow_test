@@ -2,7 +2,15 @@
 This project uses deep neural networks and convolutional neural networks to classify [German Traffic Signs](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset).
 
 ## German Traffic Signs Dataset
-<img src="images/0.png" alt="Traffic Signs" /><img src="images/1.png" alt="Traffic Signs" /><img src="images/2.png" alt="Traffic Signs" />
+<img src="images/0.png" width="64" /> <img src="images/1.png" width="64" /> <img src="images/2.png" width="64" /> <img src="images/3.png" width="64" /> <img src="images/4.png" width="64" /> <img src="images/5.png" width="64" /> <img src="images/6.png" width="64" /> <img src="images/7.png" width="64" /> <img src="images/8.png" width="64" /> <img src="images/9.png" width="64" />
+
+<img src="images/10.png" width="64" /><img src="images/11.png" width="64" /><img src="images/12.png" width="64" /><img src="images/13.png" width="64" /><img src="images/14.png" width="64" /><img src="images/15.png" width="64" /><img src="images/16.png" width="64" /><img src="images/17.png" width="64" /><img src="images/18.png" width="64" /><img src="images/19.png" width="64" />
+
+<img src="images/20.png" width="64" /> <img src="images/21.png" width="64" /> <img src="images/22.png" width="64" /> <img src="images/23.png" width="64" /> <img src="images/24.png" width="64" /> <img src="images/25.png" width="64" /> <img src="images/26.png" width="64" /> <img src="images/27.png" width="64" /> <img src="images/28.png" width="64" /> <img src="images/29.png" width="64" />
+
+<img src="images/30.png" width="64" /> <img src="images/31.png" width="64" /> <img src="images/32.png" width="64" /> <img src="images/33.png" width="64" /> <img src="images/34.png" width="64" /> <img src="images/35.png" width="64" /> <img src="images/36.png" width="64" /> <img src="images/37.png" width="64" /> <img src="images/38.png" width="64" /> <img src="images/39.png" width="64" />
+
+<img src="images/40.png" width="64" /> <img src="images/41.png" width="64" /> <img src="images/42.png" width="64" /> 
 
 This is a multi-class, single-image classification problem. 
 
