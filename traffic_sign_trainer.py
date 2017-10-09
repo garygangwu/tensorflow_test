@@ -129,6 +129,7 @@ def test_real_images(x, y, prob, logits, saver):
   predictions = session.run(tf.argmax(logits, 1), feed_dict={x: X_test, y: y_test, prob: 1.0})
 
   for i in xrange(len(predictions)):
+    mpimg.imsave(test_image_dir + str(y_test[i]) + '.png', X_test[i])
     if predictions[i] != y_test[i]:
       print('Bad prediction of label {}, correct label is {}'.format(predictions[i], y_test[i]))
 
