@@ -86,3 +86,39 @@ Alternative optimization approaches has also been evaluated as below. Although t
 | Tune the batch size / learning rate | Increase the batch size or change learning rate, but none of them achieve obvioius accruancy rate improvement | N/A |
 
 ## Test a Model on New Images
+<img src="test_images/0.ppm" width="64" />
+<img src="test_images/1.ppm" width="64" />
+<img src="test_images/10.ppm" width="64" />
+<img src="test_images/11.ppm" width="64" />
+<img src="test_images/12.ppm" width="64" />
+<img src="test_images/13.ppm" width="64" />
+<img src="test_images/14.ppm" width="64" />
+<img src="test_images/15.ppm" width="64" />
+<img src="test_images/16.ppm" width="64" />
+<img src="test_images/17.ppm" width="64" />
+<img src="test_images/18.ppm" width="64" />
+<img src="test_images/2.ppm" width="64" />
+<img src="test_images/21.ppm" width="64" />
+<img src="test_images/23.ppm" width="64" />
+<img src="test_images/25.ppm" width="64" />
+<img src="test_images/26.ppm" width="64" />
+<img src="test_images/29.ppm" width="64" />
+<img src="test_images/3.ppm" width="64" />
+<img src="test_images/30.ppm" width="64" />
+<img src="test_images/31.ppm" width="64" />
+<img src="test_images/32.ppm" width="64" />
+<img src="test_images/33.ppm" width="64" />
+<img src="test_images/34.ppm" width="64" />
+<img src="test_images/35.ppm" width="64" />
+<img src="test_images/36.ppm" width="64" />
+<img src="test_images/37.ppm" width="64" />
+<img src="test_images/38.ppm" width="64" />
+<img src="test_images/39.ppm" width="64" />
+<img src="test_images/4.ppm" width="64" />
+<img src="test_images/40.ppm" width="64" />
+<img src="test_images/42.ppm" width="64" />
+<img src="test_images/5.ppm" width="64" />
+<img src="test_images/6.ppm" width="64" />
+<img src="test_images/7.ppm" width="64" />
+<img src="test_images/8.ppm" width="64" />
+<img src="test_images/9.ppm" width="64" />
