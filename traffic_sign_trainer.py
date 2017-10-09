@@ -84,6 +84,7 @@ def evaluate(X_data, y_data, x, y, prob, accuracy_operation, session):
 def check_test_accuracy(X_test, y_test, x, y, prob,
                         accuracy_operation, logits, saver):
   import matplotlib.image as mpimg
+
   session = tf.Session()
   model_file = tf.train.latest_checkpoint(MODEL_SAVE_FOLD)
   print('Load model file from ' + model_file)
@@ -103,7 +104,36 @@ def check_test_accuracy(X_test, y_test, x, y, prob,
   print("Test Accuracy = {:.3f}".format(test_accuracy))
 
 
-def process(train_op, test_op):
+def test_real_images(x, y, prob, logits, saver):
+  import matplotlib.image as mpimg
+  import os
+
+  test_image_dir = './test_images/'
+  input_files = os.listdir(test_image_dir)
+  X_test = []
+  y_test = []
+  for filename in input_files:
+    if not '.ppm' in filename:
+      continue
+    img = mpimg.imread(test_image_dir + filename)
+    if img.shape != (32, 32, 3):
+      continue
+    label = int(filename.split('.')[0])
+    X_test.append(img)
+    y_test.append(label)
+
+  session = tf.Session()
+  model_file = tf.train.latest_checkpoint(MODEL_SAVE_FOLD)
+  print('Load model file from ' + model_file)
+  saver.restore(session, model_file)
+  predictions = session.run(tf.argmax(logits, 1), feed_dict={x: X_test, y: y_test, prob: 1.0})
+
+  for i in xrange(len(predictions)):
+    if predictions[i] != y_test[i]:
+      print('Bad prediction of label {}, correct label is {}'.format(predictions[i], y_test[i]))
+
+
+def process(train_op, test_op, test_images):
   X_train, y_train = load_training_data(expand = train_op)
   X_valid, y_valid = load_valid_data()
   X_test, y_test = load_testing_data()
@@ -133,10 +163,12 @@ def process(train_op, test_op):
   if test_op:
     check_test_accuracy(X_test, y_test, x, y, prob,
                         accuracy_operation, logits, saver)
+  if test_images:
+    test_real_images(x, y, prob, logits, saver)
 
 
 def main():
-  train_op, test_op = False, False
+  train_op, test_op, test_images = False, False, False
   if len(sys.argv) <= 1:
     train_op = True
     test_op = True
@@ -144,10 +176,12 @@ def main():
     test_op = True
   elif sys.argv[1] == 'train':
     train_op = True
+  elif sys.argv[1] == 'test_images':
+    test_images = True
   else:
-    print("Usage: python {} test|train".format(sys.argv[0]))
+    print("Usage: python {} test|train|test_images".format(sys.argv[0]))
     exit()
-  process(train_op, test_op)
+  process(train_op, test_op, test_images)
 
 
 if __name__ == "__main__":
