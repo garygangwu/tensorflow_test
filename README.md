@@ -49,12 +49,18 @@ My final model consisted of the following layers:
 
 With this neural network architecture, along with other optimization, **the accuracy rate on the test dataset is able to achieve 96.5%**
 
+## Training data preprocessing
+
+Data augmentation is required on more complex object recognition tasks. I achieved it by shifting the image to four directions, i.e. left, rigth, top and down. In addition, Images were shiftted with 1 pixel and 2 pixels, and therefore I increased the training data by 8x more. During the training processes, more data effectively effectively improved the final accurancy on the test dataset.
+
+I also tried to convert the images to different color spaces, e.g. gray (32x32x1), HLS (32x32x3), and YUV (32x32x3), hoping for prediction accurancy improvement. However, these converted images weren't able to beat the original training dataset and so I gave up this technique in the final training model.
+
 ## Model Training and Optimization
 I am able to achieve the accuracy rate of 96.4% on test dataset and 98% on the validation dataset. Below are the optimization approaches incorporated in the final version.
 
 | Approach         		|     Description	        					|
 |:---------------------:|:---------------------------------------------:|
-| Expanding training dataset | This image has been shifted the left, right, up, down direction with 1 and 2 pixels. So it adds 8x more training data |
+| Training dataset augmentation | This image has been shifted the left, right, up, down direction with 1 and 2 pixels. So it adds 8x more training data |
 | Dropout | Applies 50% dropout rate on output of the two fully connected layers |
 | L2 Regularization | Applies regularization (beta 0.01) with weights and bias of the three fully connected layers |
 | Loss Function | Computes softmax cross entropy between logits and labels |
@@ -74,7 +80,7 @@ Started from basic LeNet architecture. Here are the approaches adopted with accu
 |:--:|:---------------------:|:---------------------------------------------:|:-----------:|
 | Step 1 | Basic LeNet | The same LeNet used for hand-writing image (28x28x1) detection | *89.3%* |
 | Step 3 | L2 Regularization / Dropout | Avoid the model to be overfitting during the training | *93.4%* |
-| Step 2 | Expand the training set | Shift the images (left/right/up/down) for more training data | *95.0%* |
+| Step 2 | The training data augmentation | Shift the images (left/right/up/down) for more training data | *95.0%* |
 | Step 4 | Increase numbers of neurals | LeNet was optimized for 28x28x1 images. Given the input images are 32x32x3, it may need more numbers of weights at each layer for better output quality | **96.5%** |
 
 Alternative optimization approaches has also been evaluated as below. Although these approaches were tuned along with other optimizations including dropout, L2 Regularization, different numbers of neurals in the hidden layer. The final accurancy is still unable to beat the final version above. Therefore, they weren't been adopted. 
