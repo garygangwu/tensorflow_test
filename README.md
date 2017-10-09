@@ -99,7 +99,33 @@ Since the new images all have the correct predictions, this is not very interest
 |          | 37% (wrong)| 27.7% (wrong)|23.3% (**correct**)| 3.5% (wrong)| 1.7% (wrong)|
 |<img src="test_images/bad_pred_4_8.png" width="64" />|<img src="images/8.png" width="64" />|<img src="images/7.png" width="64" />|<img src="images/4.png" width="64" />|<img src="images/40.png" width="64" />|<img src="images/1.png" width="64" />|
 
+<img src="test_images/softmax_4.png" width="400" />
+
+
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
 |          | 29% (wrong)| 26.6% (**correct**)|7.6% (wrong)| 4.5% (wrong)| 4.2% (wrong)|
 |<img src="test_images/bad_pred_8_3.png" width="64" />|<img src="images/3.png" width="64" />|<img src="images/8.png" width="64" />|<img src="images/28.png" width="64" />|<img src="images/0.png" width="64" />|<img src="images/5.png" width="64" />|
+
+<img src="test_images/softmax_8.png" width="400" />
+
+| Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
+|:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
+|          | 67% (wrong)| 28.6% (**correct**)|4.2% (wrong)| 0.06% (wrong)| 0.01% (wrong)|
+|<img src="test_images/bad_pred_18_26.png" width="64" />|<img src="images/26.png" width="64" />|<img src="images/18.png" width="64" />|<img src="images/24.png" width="64" />|<img src="images/21.png" width="64" />|<img src="images/19.png" width="64" />|
+
+<img src="test_images/softmax_18.png" width="400" />
+
+| Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
+|:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
+|          | 29.7% (wrong)| 19.5% (wrong)| 15.9% (wrong)| 14.6% (wrong)| 7.9% (wrong)|
+|<img src="test_images/bad_pred_27_30.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/5.png" width="64" />|<img src="images/21.png" width="64" />|<img src="images/38.png" width="64" />|<img src="images/40.png" width="64" />|
+
+<img src="test_images/softmax_27.png" width="400" />
+
+| Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
+|:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
+|          | 85.5% (wrong)| 10.6% (**correct**)| 3.2% (wrong)| 0.36% (wrong)| 0.1% (wrong)|
+|<img src="test_images/bad_pred_32_15.png" width="64" />|<img src="images/15.png" width="64" />|<img src="images/32.png" width="64" />|<img src="images/26.png" width="64" />|<img src="images/22.png" width="64" />|<img src="images/14.png" width="64" />|
+
+<img src="test_images/softmax_32.png" width="400" />
