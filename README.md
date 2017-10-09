@@ -87,11 +87,12 @@ Alternative optimization approaches has also been evaluated as below. Although t
 
 ## Test a Model on New Images
 
+### 100% Accurancy on newly accquired images
 I accquired 36 more German traffic sign images below from the web for evaluation. The trained the model has successfully predict their types.
 
 <img src="test_images/0.png" width="32" /><img src="test_images/1.png" width="32" /><img src="test_images/10.png" width="32" /><img src="test_images/11.png" width="32" /><img src="test_images/12.png" width="32" /><img src="test_images/13.png" width="32" /><img src="test_images/14.png" width="32" /><img src="test_images/15.png" width="32" /><img src="test_images/16.png" width="32" /><img src="test_images/17.png" width="32" /><img src="test_images/18.png" width="32" /><img src="test_images/2.png" width="32" /><img src="test_images/21.png" width="32" /><img src="test_images/23.png" width="32" /><img src="test_images/25.png" width="32" /><img src="test_images/26.png" width="32" /><img src="test_images/29.png" width="32" /><img src="test_images/3.png" width="32" /><img src="test_images/30.png" width="32" /><img src="test_images/31.png" width="32" /><img src="test_images/32.png" width="32" /><img src="test_images/33.png" width="32" /><img src="test_images/34.png" width="32" /><img src="test_images/35.png" width="32" /><img src="test_images/36.png" width="32" /><img src="test_images/37.png" width="32" /><img src="test_images/38.png" width="32" /><img src="test_images/39.png" width="32" /><img src="test_images/4.png" width="32" /><img src="test_images/40.png" width="32" /><img src="test_images/42.png" width="32" /><img src="test_images/5.png" width="32" /><img src="test_images/6.png" width="32" /><img src="test_images/7.png" width="32" /><img src="test_images/8.png" width="32" /><img src="test_images/9.png" width="32" />
 
-### Model Certainty - Softmax Probabilities
+### Model Certainty - Softmax Probabilities on bad predicted images
 Since the new images all have the correct predictions, this is not very interesting to study the softmax probabilities of correct predictions, because the correct predicted label is dominated with almost 100% certainty. So I pulled another **5 images in the test dataset that was incorrectly labelled by my model**.
 
 #### 1. "Speed limit (70km/h)" sign
