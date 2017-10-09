@@ -92,3 +92,14 @@ I accquired 36 more German traffic sign images below from the web for evaluation
 <img src="test_images/0.png" width="32" /><img src="test_images/1.png" width="32" /><img src="test_images/10.png" width="32" /><img src="test_images/11.png" width="32" /><img src="test_images/12.png" width="32" /><img src="test_images/13.png" width="32" /><img src="test_images/14.png" width="32" /><img src="test_images/15.png" width="32" /><img src="test_images/16.png" width="32" /><img src="test_images/17.png" width="32" /><img src="test_images/18.png" width="32" /><img src="test_images/2.png" width="32" /><img src="test_images/21.png" width="32" /><img src="test_images/23.png" width="32" /><img src="test_images/25.png" width="32" /><img src="test_images/26.png" width="32" /><img src="test_images/29.png" width="32" /><img src="test_images/3.png" width="32" /><img src="test_images/30.png" width="32" /><img src="test_images/31.png" width="32" /><img src="test_images/32.png" width="32" /><img src="test_images/33.png" width="32" /><img src="test_images/34.png" width="32" /><img src="test_images/35.png" width="32" /><img src="test_images/36.png" width="32" /><img src="test_images/37.png" width="32" /><img src="test_images/38.png" width="32" /><img src="test_images/39.png" width="32" /><img src="test_images/4.png" width="32" /><img src="test_images/40.png" width="32" /><img src="test_images/42.png" width="32" /><img src="test_images/5.png" width="32" /><img src="test_images/6.png" width="32" /><img src="test_images/7.png" width="32" /><img src="test_images/8.png" width="32" /><img src="test_images/9.png" width="32" />
 
 ### Model Certainty - Softmax Probabilities
+Since the new images all have the correct predictions, this is not very interesting to study the softmax probabilities of correct predictions. So I pulled another 5 images in the test dataset that was incorrectly labelled by my model.
+
+| Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
+|:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
+|          | 37% (wrong)| 27.7% (wrong)|23.3% (**correct**)| 3.5% (wrong)| 1.7% (wrong)|
+|<img src="test_images/bad_pred_4_8.png" width="64" />|<img src="images/8.png" width="64" />|<img src="images/7.png" width="64" />|<img src="images/4.png" width="64" />|<img src="images/40.png" width="64" />|<img src="images/1.png" width="64" />|
+
+| Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
+|:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
+|          | 29% (wrong)| 26.6% (**correct**)|7.6% (wrong)| 4.5% (wrong)| 4.2% (wrong)|
+|<img src="test_images/bad_pred_8_3.png" width="64" />|<img src="images/3.png" width="64" />|<img src="images/8.png" width="64" />|<img src="images/28.png" width="64" />|<img src="images/0.png" width="64" />|<img src="images/5.png" width="64" />|
