@@ -83,7 +83,7 @@ def evaluate(X_data, y_data, x, y, prob, accuracy_operation, session):
 
 def check_test_accuracy(X_test, y_test, x, y, prob,
                         accuracy_operation, logits, saver):
-  import matplotlib.image as mpimg
+  import scipy.misc
 
   session = tf.Session()
   model_file = tf.train.latest_checkpoint(MODEL_SAVE_FOLD)
@@ -98,7 +98,7 @@ def check_test_accuracy(X_test, y_test, x, y, prob,
   for i in range(len(predictions)):
     if predictions[i] != y_test[i]:
       filename = 'images/bad_pred_' + str(y_test[i]) + '_' + str(predictions[i]) + '.png'
-      mpimg.imsave(filename, X_test[i])
+      scipy.misc.imsave(filename, X_test[i])
 
   print('')
   print("Test Accuracy = {:.3f}".format(test_accuracy))
@@ -106,6 +106,7 @@ def check_test_accuracy(X_test, y_test, x, y, prob,
 
 def test_real_images(x, y, prob, logits, saver):
   import matplotlib.image as mpimg
+  import matplotlib.pyplot as plt
   import os
 
   test_image_dir = './test_images/'
@@ -121,15 +122,35 @@ def test_real_images(x, y, prob, logits, saver):
     label = int(filename.split('.')[0])
     X_test.append(img)
     y_test.append(label)
+  X_test, y_test = shuffle(X_test, y_test)
+  X_test, y_test = X_test[:5], y_test[:5]
 
   session = tf.Session()
   model_file = tf.train.latest_checkpoint(MODEL_SAVE_FOLD)
   print('Load model file from ' + model_file)
   saver.restore(session, model_file)
-  predictions = session.run(tf.argmax(logits, 1), feed_dict={x: X_test, y: y_test, prob: 1.0})
+  logits_results = session.run(logits, feed_dict={x: X_test, y: y_test, prob: 1.0})
+  softmax_probabilities = session.run(tf.nn.softmax(logits_results))
+  predictions = session.run(tf.argmax(logits_results, 1))
 
   for i in xrange(len(predictions)):
-    mpimg.imsave(test_image_dir + str(y_test[i]) + '.png', X_test[i])
+    #mpimg.imsave(test_image_dir + str(y_test[i]) + '.png', X_test[i])
+    s = softmax_probabilities[i]
+    sorted_index = sorted(range(len(s)), key=lambda k: s[k], reverse=True)[:5]
+    sorted_props = sorted(s, reverse=True)[:5]
+
+    plt.clf()
+    y_pos = np.arange(len(sorted_index))
+    plt.bar(y_pos, sorted_props, align='center', alpha=1)
+    plt.xticks(y_pos, sorted_index)
+    plt.xlabel('Label')
+    plt.ylabel('softmax Probability')
+    plt.title('Model predictions with the probabilities on each label'.format(y_test[i]))
+    plt.savefig('{}softmax_{}.png'.format(test_image_dir, y_test[i]))
+    print(y_test[i])
+    print(sorted_props)
+    print(sorted_index)
+
     if predictions[i] != y_test[i]:
       print('Bad prediction of label {}, correct label is {}'.format(predictions[i], y_test[i]))
 
