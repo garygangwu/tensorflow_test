@@ -3,4 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.p
+tf_models/*
+images/bad*
 .DS_Store

@@ -61,10 +61,10 @@ def expand_training_set(X_train, y_train, depth=3):
     X_train_right_shift[i] = right_shift(image)
     X_train_up_shift[i] = up_shift(image)
     X_train_down_shift[i] = down_shift(image)
-    X_train_left_down_shift[i] = down_shift(X_train_left_shift[i])
-    X_train_right_up_shift[i] = up_shift(X_train_right_shift[i])
-    X_train_left_up_shift[i] = up_shift(X_train_left_shift[i])
-    X_train_right_down_shift[i] = down_shift(X_train_right_shift[i])
+    X_train_left_down_shift[i] = left_shift(X_train_left_shift[i])
+    X_train_right_up_shift[i] = right_shift(X_train_right_shift[i])
+    X_train_left_up_shift[i] = up_shift(X_train_up_shift[i])
+    X_train_right_down_shift[i] = down_shift(X_train_down_shift[i])
 
   return np.concatenate(
               (X_train,

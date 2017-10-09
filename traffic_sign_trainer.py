@@ -81,19 +81,30 @@ def evaluate(X_data, y_data, x, y, prob, accuracy_operation, session):
   return total_accuracy / num_examples
 
 
-def check_test_accuracy(X_test, y_test, x, y, prob, accuracy_operation, saver):
+def check_test_accuracy(X_test, y_test, x, y, prob,
+                        accuracy_operation, logits, saver):
+  import matplotlib.image as mpimg
   session = tf.Session()
   model_file = tf.train.latest_checkpoint(MODEL_SAVE_FOLD)
   print('Load model file from ' + model_file)
   saver.restore(session, model_file)
 
-  test_accuracy = evaluate(X_test, y_test, x, y, prob, accuracy_operation, session)
+  test_accuracy, logits_results = session.run(
+    [accuracy_operation, logits],
+    feed_dict={x: X_test, y: y_test, prob: 1.0})
+
+  predictions = session.run(tf.argmax(logits_results, 1))
+  for i in range(len(predictions)):
+    if predictions[i] != y_test[i]:
+      filename = 'images/bad_pred_' + str(y_test[i]) + '_' + str(predictions[i]) + '.png'
+      mpimg.imsave(filename, X_test[i])
+
   print('')
   print("Test Accuracy = {:.3f}".format(test_accuracy))
 
 
 def process(train_op, test_op):
-  X_train, y_train = load_training_data()
+  X_train, y_train = load_training_data(expand = train_op)
   X_valid, y_valid = load_valid_data()
   X_test, y_test = load_testing_data()
 
@@ -120,7 +131,8 @@ def process(train_op, test_op):
     train(X_train, y_train, X_valid, y_valid, X_test, y_test,
           x, y, prob, training_operation, loss_operation, accuracy_operation, saver)
   if test_op:
-    check_test_accuracy(X_test, y_test, x, y, prob, accuracy_operation, saver)
+    check_test_accuracy(X_test, y_test, x, y, prob,
+                        accuracy_operation, logits, saver)
 
 
 def main():
