@@ -98,8 +98,8 @@ I accquired 36 more German traffic sign images below from the web for evaluation
 
 <img src="test_images/0.png" width="32" /><img src="test_images/1.png" width="32" /><img src="test_images/10.png" width="32" /><img src="test_images/11.png" width="32" /><img src="test_images/12.png" width="32" /><img src="test_images/13.png" width="32" /><img src="test_images/14.png" width="32" /><img src="test_images/15.png" width="32" /><img src="test_images/16.png" width="32" /><img src="test_images/17.png" width="32" /><img src="test_images/18.png" width="32" /><img src="test_images/2.png" width="32" /><img src="test_images/21.png" width="32" /><img src="test_images/23.png" width="32" /><img src="test_images/25.png" width="32" /><img src="test_images/26.png" width="32" /><img src="test_images/29.png" width="32" /><img src="test_images/3.png" width="32" /><img src="test_images/30.png" width="32" /><img src="test_images/31.png" width="32" /><img src="test_images/32.png" width="32" /><img src="test_images/33.png" width="32" /><img src="test_images/34.png" width="32" /><img src="test_images/35.png" width="32" /><img src="test_images/36.png" width="32" /><img src="test_images/37.png" width="32" /><img src="test_images/38.png" width="32" /><img src="test_images/39.png" width="32" /><img src="test_images/4.png" width="32" /><img src="test_images/40.png" width="32" /><img src="test_images/42.png" width="32" /><img src="test_images/5.png" width="32" /><img src="test_images/6.png" width="32" /><img src="test_images/7.png" width="32" /><img src="test_images/8.png" width="32" /><img src="test_images/9.png" width="32" />
 
-### Model Certainty - Softmax Probabilities on bad predicted images
-Since the new images all have the correct predictions, this is not very interesting to study the softmax probabilities of correct predictions, because the correct predicted label is dominated with almost 100% certainty. So I pulled another **5 images in the test dataset that was incorrectly labelled by my model**.
+### Model Certainty - Softmax Probabilities
+Below are 5 new images along with the prediction, images generated from the output of the convolutional layers, and softmax Probabilities
 
 #### 1. "Road work" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
@@ -107,6 +107,8 @@ Since the new images all have the correct predictions, this is not very interest
 |          | 1.0 (**correct**)| 4.226e-10 (wrong)| 7.91e-11 (wrong)| 2.49e-11 (wrong)| 1.33e-11 (wrong)|
 |<img src="test_images/25.png" width="64" />|<img src="images/25.png" width="64" />|<img src="images/20.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/12.png" width="64" />|<img src="images/27.png" width="64" />|
 
+First Conv layer <img src="test_images/conv1_25.png" width="64" />
+Second Conv layer <img src="test_images/conv1_25.png" width="64" />
 
 
 #### 2. "Double curve" sign
