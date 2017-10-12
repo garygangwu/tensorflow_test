@@ -17,10 +17,10 @@ def LeNet(x,
     # (height, width, input_depth, output_depth)
     conv1_W = tf.Variable(tf.truncated_normal(shape=(5, 5, image_depth, conv1_output_depth), mean = mu, stddev = sigma))
     conv1_b = tf.Variable(tf.zeros(conv1_output_depth))
-    conv1   = tf.nn.conv2d(x, conv1_W, strides=[1, 1, 1, 1], padding='VALID') + conv1_b
+    conv1_x = tf.nn.conv2d(x, conv1_W, strides=[1, 1, 1, 1], padding='VALID') + conv1_b
 
     # SOLUTION: Activation.
-    conv1 = tf.nn.relu(conv1)
+    conv1 = tf.nn.relu(conv1_x)
 
     # SOLUTION: Pooling. Input = 28x28x6. Output = 14x14x6.
     conv1 = tf.nn.max_pool(conv1, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='VALID')
@@ -28,10 +28,10 @@ def LeNet(x,
     # SOLUTION: Layer 2: Convolutional. Output = 10x10x16.
     conv2_W = tf.Variable(tf.truncated_normal(shape=(5, 5, conv1_output_depth, conv2_output_depth), mean = mu, stddev = sigma))
     conv2_b = tf.Variable(tf.zeros(conv2_output_depth))
-    conv2   = tf.nn.conv2d(conv1, conv2_W, strides=[1, 1, 1, 1], padding='VALID') + conv2_b
+    conv2_x = tf.nn.conv2d(conv1, conv2_W, strides=[1, 1, 1, 1], padding='VALID') + conv2_b
 
     # SOLUTION: Activation.
-    conv2 = tf.nn.relu(conv2)
+    conv2 = tf.nn.relu(conv2_x)
 
     # SOLUTION: Pooling. Input = 10x10x16. Output = 5x5x16.
     conv2 = tf.nn.max_pool(conv2, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='VALID')
@@ -74,5 +74,5 @@ def LeNet(x,
       tf.nn.l2_loss(fc3_W) + \
       tf.nn.l2_loss(fc3_b)
 
-    return logits, regularizer
+    return logits, regularizer, conv1_x, conv2_x
 

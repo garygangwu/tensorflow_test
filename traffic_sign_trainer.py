@@ -1,9 +1,11 @@
 import sys
 import time
+import math
 from sklearn.utils import shuffle
 import tensorflow as tf
 from traffic_sign_data_loader import *
 from traffic_sign_training_utils import *
+import matplotlib.pyplot as plt
 
 EPOCHS = 30
 BATCH_SIZE = 128
@@ -83,7 +85,7 @@ def evaluate(X_data, y_data, x, y, prob, accuracy_operation, session):
 
 def check_test_accuracy(X_test, y_test, x, y, prob,
                         accuracy_operation, logits, saver):
-  import scipy.misc
+  #import scipy.misc
 
   session = tf.Session()
   model_file = tf.train.latest_checkpoint(MODEL_SAVE_FOLD)
@@ -94,19 +96,58 @@ def check_test_accuracy(X_test, y_test, x, y, prob,
     [accuracy_operation, logits],
     feed_dict={x: X_test, y: y_test, prob: 1.0})
 
-  predictions = session.run(tf.argmax(logits_results, 1))
-  for i in range(len(predictions)):
-    if predictions[i] != y_test[i]:
-      filename = 'images/bad_pred_' + str(y_test[i]) + '_' + str(predictions[i]) + '.png'
-      scipy.misc.imsave(filename, X_test[i])
-
   print('')
   print("Test Accuracy = {:.3f}".format(test_accuracy))
 
+  predictions = session.run(tf.argmax(logits_results, 1))
+  for i in range(len(predictions)):
+     if predictions[i] != y_test[i]:
+       print('Prediction of label {}, correct label is {}'.format(predictions[i], y_test[i]))
+  #     filename = 'images/bad_pred_' + str(y_test[i]) + '_' + str(predictions[i]) + '.png'
+  #     scipy.misc.imsave(filename, X_test[i])
 
-def test_real_images(x, y, prob, logits, saver):
+
+### Visualize your network's feature maps here.
+### Feel free to use as many code cells as needed.
+
+# image_input: the test image being fed into the network to produce the feature maps
+# tf_activation: should be a tf variable name used during your training procedure that represents the calculated state of a specific weight layer
+# activation_min/max: can be used to view the activation contrast in more detail, by default matplot sets min and max to the actual min and max values of the output
+# plt_num: used to plot out multiple different weight feature map sets on the same block, just extend the plt number for each new feature map entry
+
+def outputFeatureMap(labels, featuremaps, file_name_prefix,
+                     activation_min=-1, activation_max=-1 ,plt_num=1):
+
+  num_layer = math.ceil(featuremaps.shape[3] * 1.0 / 10)
+  for k in xrange(len(labels)):
+    label = labels[k]
+    plt.figure(plt_num, figsize=(22,4.5))
+    #plt.clf()
+    for i in xrange(featuremaps.shape[3]):
+      plt.subplot(num_layer, 10, i+1) # sets the number of feature maps to show on each row and column
+      plt.title('FeatureMap ' + str(i)) # displays the feature map number
+      if activation_min != -1 & activation_max != -1:
+        plt.imshow(featuremaps[k,:,:,i], interpolation="nearest", vmin =activation_min, vmax=activation_max, cmap="gray")
+      elif activation_max != -1:
+        plt.imshow(featuremaps[k,:,:,i], interpolation="nearest", vmax=activation_max, cmap="gray")
+      elif activation_min !=-1:
+        plt.imshow(featuremaps[k,:,:,i], interpolation="nearest", vmin=activation_min, cmap="gray")
+      else:
+        plt.imshow(featuremaps[k,:,:,i], interpolation="nearest", cmap="gray")
+
+    filename = file_name_prefix + '_' + str(label) + '.png'
+    plt.savefig(filename, bbox_inches='tight')
+    print("Saved to " + filename)
+
+def convert_png_to_ppm(img):
+  new_img = np.zeros((32,32,3))
+  for i in xrange(img.shape[0]):
+    for j in xrange(img.shape[1]):
+      new_img[i][j] = 255 * img[i][j][:3]
+  return new_img
+
+def test_real_images(x, y, prob, accuracy_operation, logits, conv1_x, conv2_x, saver):
   import matplotlib.image as mpimg
-  import matplotlib.pyplot as plt
   import os
 
   test_image_dir = './test_images/'
@@ -114,9 +155,9 @@ def test_real_images(x, y, prob, logits, saver):
   X_test = []
   y_test = []
   for filename in input_files:
-    if not '.ppm' in filename:
+    if not '.png' in filename or not filename[0].isdigit():
       continue
-    img = mpimg.imread(test_image_dir + filename)
+    img = convert_png_to_ppm(mpimg.imread(test_image_dir + filename))
     if img.shape != (32, 32, 3):
       continue
     label = int(filename.split('.')[0])
@@ -127,32 +168,25 @@ def test_real_images(x, y, prob, logits, saver):
 
   session = tf.Session()
   model_file = tf.train.latest_checkpoint(MODEL_SAVE_FOLD)
-  print('Load model file from ' + model_file)
   saver.restore(session, model_file)
+  print('Load model file from ' + model_file)
+
   logits_results = session.run(logits, feed_dict={x: X_test, y: y_test, prob: 1.0})
   softmax_probabilities = session.run(tf.nn.softmax(logits_results))
   predictions = session.run(tf.argmax(logits_results, 1))
+  conv1_x_results, conv2_x_results = session.run(
+    [conv1_x, conv2_x], feed_dict={x: X_test, y: y_test, prob: 1.0})
 
+  os.system('rm -f ' + test_image_dir + 'conv*.png')
+  outputFeatureMap(y_test, conv1_x_results, test_image_dir + 'conv1')
+  outputFeatureMap(y_test, conv2_x_results, test_image_dir + 'conv2')
   for i in xrange(len(predictions)):
-    #mpimg.imsave(test_image_dir + str(y_test[i]) + '.png', X_test[i])
     s = softmax_probabilities[i]
-    sorted_index = sorted(range(len(s)), key=lambda k: s[k], reverse=True)[:5]
-    sorted_props = sorted(s, reverse=True)[:5]
-
-    plt.clf()
-    y_pos = np.arange(len(sorted_index))
-    plt.bar(y_pos, sorted_props, align='center', alpha=1)
-    plt.xticks(y_pos, sorted_index)
-    plt.xlabel('Label')
-    plt.ylabel('softmax Probability')
-    plt.title('Model predictions with the probabilities on each label'.format(y_test[i]))
-    plt.savefig('{}softmax_{}.png'.format(test_image_dir, y_test[i]))
-    print(y_test[i])
+    sorted_index = sorted(range(len(s)), key=lambda k: s[k], reverse=True)[:10]
+    sorted_props = sorted(s, reverse=True)[:10]
+    print('Prediction of label {}, correct label is {}'.format(predictions[i], y_test[i]))
     print(sorted_props)
     print(sorted_index)
-
-    if predictions[i] != y_test[i]:
-      print('Bad prediction of label {}, correct label is {}'.format(predictions[i], y_test[i]))
 
 
 def process(train_op, test_op, test_images):
@@ -169,7 +203,7 @@ def process(train_op, test_op, test_images):
   one_hot_y = tf.one_hot(y, 43)
 
   prob = tf.placeholder_with_default(1.0, shape=())
-  logits, regularizer = LeNet(x, dropout_prob = prob, image_depth = image_depth)
+  logits, regularizer, conv1_x, conv2_x = LeNet(x, dropout_prob = prob, image_depth = image_depth)
   cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=one_hot_y, logits=logits)
   loss_operation = tf.reduce_mean(cross_entropy + BETA * regularizer)
   optimizer = tf.train.AdamOptimizer(learning_rate = LEARNING_RATE)
@@ -186,7 +220,7 @@ def process(train_op, test_op, test_images):
     check_test_accuracy(X_test, y_test, x, y, prob,
                         accuracy_operation, logits, saver)
   if test_images:
-    test_real_images(x, y, prob, logits, saver)
+    test_real_images(x, y, prob, accuracy_operation, logits, conv1_x, conv2_x, saver)
 
 
 def main():
