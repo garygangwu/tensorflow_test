@@ -105,11 +105,10 @@ Below are 5 new images along with the prediction, images generated from the outp
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
 |          | 1.0 (**correct**)| 4.226e-10 (wrong)| 7.91e-11 (wrong)| 2.49e-11 (wrong)| 1.33e-11 (wrong)|
-|<img src="test_images/25.png" width="64" />|<img src="images/25.png" width="64" />|<img src="images/20.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/12.png" width="64" />|<img src="images/27.png" width="64" />|
+|<img src="test_images/34.png" width="64" />|<img src="images/34.png" width="64" />|<img src="images/40.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/38.png" width="64" />|<img src="images/35.png" width="64" />|
 
-First Conv layer <img src="test_images/conv1_25.png" width="64" />
-Second Conv layer <img src="test_images/conv1_25.png" width="64" />
-
+First Conv layer <img src="test_images/conv1_34.png" width="64" />
+Second Conv layer <img src="test_images/conv1_34.png" width="64" />
 
 #### 2. "Double curve" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
