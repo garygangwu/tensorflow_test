@@ -108,10 +108,12 @@ Below are 5 new images along with the prediction, images generated from the outp
 |<img src="test_images/34.png" width="64" />|<img src="images/34.png" width="64" />|<img src="images/40.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/38.png" width="64" />|<img src="images/35.png" width="64" />|
 
 First Conv layer 
-<img src="test_images/conv1_34.png" width="600" />
+
+<img src="test_images/conv1_34.png" width="800" />
 
 Second Conv layer 
-<img src="test_images/conv1_34.png" width="600" />
+
+<img src="test_images/conv2_34.png" width="800" />
 
 #### 2. "Slippery road" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
@@ -120,10 +122,12 @@ Second Conv layer
 |<img src="test_images/23.png" width="64" />|<img src="images/23.png" width="64" />|<img src="images/31.png" width="64" />|<img src="images/19.png" width="64" />|<img src="images/36.png" width="64" />|<img src="images/10.png" width="64" />|
 
 First Conv layer 
-<img src="test_images/conv1_23.png" width="600" />
+
+<img src="test_images/conv1_23.png" width="800" />
 
 Second Conv layer 
-<img src="test_images/conv1_23.png" width="600" />
+
+<img src="test_images/conv2_23.png" width="800" />
 
 #### 3. "Speed limit (100km/h)" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
@@ -132,10 +136,12 @@ Second Conv layer
 |<img src="test_images/7.png" width="64" />|<img src="images/7.png" width="64" />|<img src="images/8.png" width="64" />|<img src="images/5.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/40.png" width="64" />|
 
 First Conv layer 
-<img src="test_images/conv1_7.png" width="600" />
+
+<img src="test_images/conv1_7.png" width="800" />
 
 Second Conv layer 
-<img src="test_images/conv1_7.png" width="600" />
+
+<img src="test_images/conv2_7.png" width="800" />
 
 #### 4. "General caution" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
@@ -144,10 +150,12 @@ Second Conv layer
 |<img src="test_images/18.png" width="64" />|<img src="images/18.png" width="64" />|<img src="images/26.png" width="64" />|<img src="images/31.png" width="64" />|<img src="images/21.png" width="64" />|<img src="images/27.png" width="64" />|
 
 First Conv layer 
-<img src="test_images/conv1_18.png" width="600" />
+
+<img src="test_images/conv1_18.png" width="800" />
 
 Second Conv layer 
-<img src="test_images/conv1_18.png" width="600" />
+
+<img src="test_images/conv2_18.png" width="800" />
 
 #### 5. "Keep right" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
@@ -156,7 +164,9 @@ Second Conv layer
 |<img src="test_images/38.png" width="64" />|<img src="images/38.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/5.png" width="64" />|<img src="images/40.png" width="64" />|<img src="images/2.png" width="64" />|
 
 First Conv layer 
-<img src="test_images/conv1_38.png" width="600" />
+
+<img src="test_images/conv1_38.png" width="800" />
 
 Second Conv layer 
-<img src="test_images/conv1_38.png" width="600" />
+
+<img src="test_images/conv2_38.png" width="800" />
