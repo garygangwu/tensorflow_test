@@ -101,52 +101,34 @@ I accquired 36 more German traffic sign images below from the web for evaluation
 ### Model Certainty - Softmax Probabilities on bad predicted images
 Since the new images all have the correct predictions, this is not very interesting to study the softmax probabilities of correct predictions, because the correct predicted label is dominated with almost 100% certainty. So I pulled another **5 images in the test dataset that was incorrectly labelled by my model**.
 
-#### 1. "Speed limit (70km/h)" sign
+#### 1. "Road work" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
-|          | 37% (wrong)| 27.7% (wrong)|23.3% (**correct**)| 3.5% (wrong)| 1.7% (wrong)|
-|<img src="test_images/bad_pred_4_8.png" width="64" />|<img src="images/8.png" width="64" />|<img src="images/7.png" width="64" />|<img src="images/4.png" width="64" />|<img src="images/40.png" width="64" />|<img src="images/1.png" width="64" />|
+|          | 1.0 (**correct**)| 4.226e-10 (wrong)| 7.91e-11 (wrong)| 2.49e-11 (wrong)| 1.33e-11 (wrong)|
+|<img src="test_images/25.png" width="64" />|<img src="images/25.png" width="64" />|<img src="images/20.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/12.png" width="64" />|<img src="images/27.png" width="64" />|
 
-This sign was incorrectly labelled as "Speed limit (120km/h)", and the correct label was ranked the third. Below is the softmax probability distriubtion.
 
-<img src="test_images/softmax_4.png" width="400" />
 
-#### 2. "Speed limit (120km/h)" sign
+#### 2. "Double curve" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
-|          | 29% (wrong)| 26.6% (**correct**)|7.6% (wrong)| 4.5% (wrong)| 4.2% (wrong)|
-|<img src="test_images/bad_pred_8_3.png" width="64" />|<img src="images/3.png" width="64" />|<img src="images/8.png" width="64" />|<img src="images/28.png" width="64" />|<img src="images/0.png" width="64" />|<img src="images/5.png" width="64" />|
+|          | 1.0 (**correct**)| 2.38e-09 (wrong)| 6.70e-10 (wrong)| 3.18e-11 (wrong)| 6.98e-12 (wrong)|
+|<img src="test_images/21.png" width="64" />|<img src="images/21.png" width="64" />|<img src="images/31.png" width="64" />|<img src="images/11.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/37.png" width="64" />|
 
-This sign was incorrectly labelled as "Speed limit (60km/h)", and the correct label was ranked the second. Below is the softmax probability distriubtion.
-
-<img src="test_images/softmax_8.png" width="400" />
-
-#### 3. "General caution" sign
+#### 3. "Speed limit (20km/h)" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
-|          | 67% (wrong)| 28.6% (**correct**)|4.2% (wrong)| 0.06% (wrong)| 0.01% (wrong)|
-|<img src="test_images/bad_pred_18_26.png" width="64" />|<img src="images/26.png" width="64" />|<img src="images/18.png" width="64" />|<img src="images/24.png" width="64" />|<img src="images/21.png" width="64" />|<img src="images/19.png" width="64" />|
+|          | 0.99999821 (**correct**)| 1.658e-06 (wrong)| 6.70e-08 (wrong)| 4.73e-09 (wrong)| 2.54e-10 (wrong)|
+|<img src="test_images/0.png" width="64" />|<img src="images/0.png" width="64" />|<img src="images/8.png" width="64" />|<img src="images/1.png" width="64" />|<img src="images/3.png" width="64" />|<img src="images/33.png" width="64" />|
 
-This sign was incorrectly labelled as "Traffic signals", and the correct label was ranked the second. Below is the softmax probability distriubtion.
-
-<img src="test_images/softmax_18.png" width="400" />
-
-#### 4. "Pedestrians" sign
+#### 4. "Yield" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
-|          | 29.7% (wrong)| 19.5% (wrong)| 15.9% (wrong)| 14.6% (wrong)| 7.9% (wrong)|
-|<img src="test_images/bad_pred_27_30.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/5.png" width="64" />|<img src="images/21.png" width="64" />|<img src="images/38.png" width="64" />|<img src="images/40.png" width="64" />|
+|          | 0.99993825 (**correct**)| 1.533e-05 (wrong)| 7.266e-06 (wrong)| 6.969e-06 (wrong)| 6.576e-06 (wrong)|
+|<img src="test_images/13.png" width="64" />|<img src="images/13.png" width="64" />|<img src="images/2.png" width="64" />|<img src="images/15.png" width="64" />|<img src="images/3.png" width="64" />|<img src="images/14.png" width="64" />|
 
-This sign was incorrectly labelled as "Beware of ice/snow", and none of the top five predictions were correct.
-
-<img src="test_images/softmax_27.png" width="400" />
-
-#### 5. "End of all speed and passing limits" sign
+#### 5. "Speed limit (100km/h)" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
-|          | 85.5% (wrong)| 10.6% (**correct**)| 3.2% (wrong)| 0.36% (wrong)| 0.1% (wrong)|
-|<img src="test_images/bad_pred_32_15.png" width="64" />|<img src="images/15.png" width="64" />|<img src="images/32.png" width="64" />|<img src="images/26.png" width="64" />|<img src="images/22.png" width="64" />|<img src="images/14.png" width="64" />|
-
-This sign was incorrectly labelled as "No vehicles", and the correct label was ranked the second. Below is the softmax probability distriubtion.
-
-<img src="test_images/softmax_32.png" width="400" />
+|          | 1.0 (**correct**)| 5.34e-12 (wrong)| 7.18e-13 (wrong)| 7.18e-13 (wrong)| 4.64e-14 (wrong)|
+|<img src="test_images/7.png" width="64" />|<img src="images/7.png" width="64" />|<img src="images/8.png" width="64" />|<img src="images/5.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/40.png" width="64" />|
