@@ -1,6 +1,8 @@
 # Traffic Sign Classifier
 This project uses deep neural networks and convolutional neural networks to classify [German Traffic Signs](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset).
 
+Usage: `python traffic_sign_trainer.py` to train and evalute the model
+
 ## German Traffic Signs Dataset
 Label 00 - 09: <img src="images/0.png" width="64" /> <img src="images/1.png" width="64" /> <img src="images/2.png" width="64" /> <img src="images/3.png" width="64" /> <img src="images/4.png" width="64" /> <img src="images/5.png" width="64" /> <img src="images/6.png" width="64" /> <img src="images/7.png" width="64" /> <img src="images/8.png" width="64" /> <img src="images/9.png" width="64" />
 
