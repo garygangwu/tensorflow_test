@@ -103,19 +103,19 @@ I accquired 36 more German traffic sign images below from the web for evaluation
 ### Model Certainty - Softmax Probabilities
 Below are 5 new images along with the prediction, images generated from the output of the convolutional layers, and softmax Probabilities
 
-#### 1. "Turn left ahead" sign
+#### 1. "Speed limit (100km/h)" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
-|          | 1.0 (**correct**)| 4.226e-10 (wrong)| 7.91e-11 (wrong)| 2.49e-11 (wrong)| 1.33e-11 (wrong)|
-|<img src="test_images/34.png" width="64" />|<img src="images/34.png" width="64" />|<img src="images/40.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/38.png" width="64" />|<img src="images/35.png" width="64" />|
+|          | 0.894 (**correct**)| 0.105 (wrong)| 0.0002 (wrong)| 7.73e-05 (wrong)| 1.44e-05 (wrong)|
+|<img src="test_images/pred_7_.png" width="64" />|<img src="images/7.png" width="64" />|<img src="images/8.png" width="64" />|<img src="images/40.png" width="64" />|<img src="images/5.png" width="64" />|<img src="images/0.png" width="64" />|
 
 Output from the first Conv layer (edge and shape detection)
 
-<img src="test_images/conv1_34.png" width="800" />
+<img src="test_images/conv_1_7.png" width="800" />
 
 Output from the second Conv layer (higher level feature detection)
 
-<img src="test_images/conv2_34.png" width="800" />
+<img src="test_images/conv_2_7.png" width="800" />
 
 #### 2. "Slippery road" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
