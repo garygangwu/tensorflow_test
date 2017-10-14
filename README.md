@@ -145,30 +145,30 @@ Output from the second Conv layer (higher level feature detection)
 
 <img src="test_images/conv_2_7.png" width="800" />
 
-#### 4. "General caution" sign
+#### 4. "Road work" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
-|          | 0.894 (**correct**)| 0.105 (wrong)| 0.0002 (wrong)| 7.73e-05 (wrong)| 1.44e-05 (wrong)|
-|<img src="test_images/pred_7_.png" width="64" />|<img src="images/7.png" width="64" />|<img src="images/8.png" width="64" />|<img src="images/40.png" width="64" />|<img src="images/5.png" width="64" />|<img src="images/0.png" width="64" />|
+|          | 0.4018 (wrong)| 0.3703 (wrong)| 0.1134 (wrong)| 0.0358 (**correct**)| 0.0332 (wrong)|
+|<img src="test_images/pred_25_.png" width="64" />|<img src="images/4.png" width="64" />|<img src="images/1.png" width="64" />|<img src="images/38.png" width="64" />|<img src="images/25.png" width="64" />|<img src="images/36.png" width="64" />|
 
 Output from the first Conv layer (edge and shape detection)
 
-<img src="test_images/conv_1_7.png" width="800" />
+<img src="test_images/conv_1_25.png" width="800" />
 
 Output from the second Conv layer (higher level feature detection)
 
-<img src="test_images/conv_2_7.png" width="800" />
+<img src="test_images/conv_2_25.png" width="800" />
 
-#### 5. "Keep right" sign
+#### 5. "Beware of ice/snow" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
 |          | 0.894 (**correct**)| 0.105 (wrong)| 0.0002 (wrong)| 7.73e-05 (wrong)| 1.44e-05 (wrong)|
-|<img src="test_images/pred_7_.png" width="64" />|<img src="images/7.png" width="64" />|<img src="images/8.png" width="64" />|<img src="images/40.png" width="64" />|<img src="images/5.png" width="64" />|<img src="images/0.png" width="64" />|
+|<img src="test_images/pred_30_.png" width="64" />|<img src="images/23.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/20.png" width="64" />|<img src="images/37.png" width="64" />|<img src="images/31.png" width="64" />|
 
 Output from the first Conv layer (edge and shape detection)
 
-<img src="test_images/conv_1_7.png" width="800" />
+<img src="test_images/conv_1_30.png" width="800" />
 
 Output from the second Conv layer (higher level feature detection)
 
-<img src="test_images/conv_2_7.png" width="800" />
+<img src="test_images/conv_2_30.png" width="800" />
