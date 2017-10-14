@@ -162,7 +162,7 @@ Output from the second Conv layer (higher level feature detection)
 #### 5. "Beware of ice/snow" sign
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
-|          | 0.894 (**correct**)| 0.105 (wrong)| 0.0002 (wrong)| 7.73e-05 (wrong)| 1.44e-05 (wrong)|
+|          | 0.3555 (wrong)| 0.1520 (**correct**)| 0.1171 (wrong)| 0.08077 (wrong)| 0.0602 (wrong)|
 |<img src="test_images/pred_30_.png" width="64" />|<img src="images/23.png" width="64" />|<img src="images/30.png" width="64" />|<img src="images/20.png" width="64" />|<img src="images/37.png" width="64" />|<img src="images/31.png" width="64" />|
 
 Output from the first Conv layer (edge and shape detection)
