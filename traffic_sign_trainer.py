@@ -85,8 +85,6 @@ def evaluate(X_data, y_data, x, y, prob, accuracy_operation, session):
 
 def check_test_accuracy(X_test, y_test, x, y, prob,
                         accuracy_operation, logits, saver):
-  #import scipy.misc
-
   session = tf.Session()
   model_file = tf.train.latest_checkpoint(MODEL_SAVE_FOLD)
   print('Load model file from ' + model_file)
@@ -100,11 +98,14 @@ def check_test_accuracy(X_test, y_test, x, y, prob,
   print("Test Accuracy = {:.3f}".format(test_accuracy))
 
   predictions = session.run(tf.argmax(logits_results, 1))
+  n = 0
   for i in range(len(predictions)):
-     if predictions[i] != y_test[i]:
-       print('Prediction of label {}, correct label is {}'.format(predictions[i], y_test[i]))
-  #     filename = 'images/bad_pred_' + str(y_test[i]) + '_' + str(predictions[i]) + '.png'
-  #     scipy.misc.imsave(filename, X_test[i])
+    if predictions[i] != y_test[i]:
+      print('Prediction of label {}, correct label is {}'.format(predictions[i], y_test[i]))
+      if n <= 5:
+        filename = 'test_images/pred_' + str(y_test[i]) + '_.png'
+        plt.imsave(filename, X_test[i])
+      n += 1
 
 
 ### Visualize your network's feature maps here.
@@ -155,16 +156,19 @@ def test_real_images(x, y, prob, accuracy_operation, logits, conv1_x, conv2_x, s
   X_test = []
   y_test = []
   for filename in input_files:
-    if not '.png' in filename or not filename[0].isdigit():
+    #if not '.png' in filename or not filename[0].isdigit():
+    #  continue
+    if not 'pred_' in filename or not '_.png' in filename:
       continue
     img = convert_png_to_ppm(mpimg.imread(test_image_dir + filename))
     if img.shape != (32, 32, 3):
       continue
-    label = int(filename.split('.')[0])
+    #label = int(filename.split('.')[0])
+    label = int(filename.split('_')[1])
     X_test.append(img)
     y_test.append(label)
   X_test, y_test = shuffle(X_test, y_test)
-  X_test, y_test = X_test[:5], y_test[:5]
+  #X_test, y_test = X_test[:3], y_test[:3]
 
   session = tf.Session()
   model_file = tf.train.latest_checkpoint(MODEL_SAVE_FOLD)
@@ -178,8 +182,8 @@ def test_real_images(x, y, prob, accuracy_operation, logits, conv1_x, conv2_x, s
     [conv1_x, conv2_x], feed_dict={x: X_test, y: y_test, prob: 1.0})
 
   os.system('rm -f ' + test_image_dir + 'conv*.png')
-  outputFeatureMap(y_test, conv1_x_results, test_image_dir + 'conv1')
-  outputFeatureMap(y_test, conv2_x_results, test_image_dir + 'conv2')
+  outputFeatureMap(y_test, conv1_x_results, test_image_dir + 'conv_1')
+  outputFeatureMap(y_test, conv2_x_results, test_image_dir + 'conv_2')
   for i in xrange(len(predictions)):
     s = softmax_probabilities[i]
     sorted_index = sorted(range(len(s)), key=lambda k: s[k], reverse=True)[:10]
