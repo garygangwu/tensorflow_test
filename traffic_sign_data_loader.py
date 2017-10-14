@@ -13,17 +13,17 @@ def load_training_data(expand = True):
 
   if expand:
     X_train, y_train = expand_training_set(X_train, y_train, depth=image_depth)
-  return X_train, y_train
+  return normalize_images(X_train), y_train
 
 def load_valid_data():
   valid = pickle.load(open(VALID_FILE, mode='rb'))
   X_valid, y_valid = valid['features'], valid['labels']
-  return X_valid, y_valid
+  return normalize_images(X_valid), y_valid
 
 def load_testing_data():
   test = pickle.load(open(TESTING_FILE, mode='rb'))
   X_test, y_test = test['features'], test['labels']
-  return X_test, y_test
+  return normalize_images(X_test), y_test
 
 def left_shift(a):
   x = np.roll(a,-1,axis=1)
@@ -88,3 +88,7 @@ def expand_training_set(X_train, y_train, depth=3):
                y_train,
                y_train),
               axis=0)
+
+def normalize_images(images):
+  return (images * 1.0 - 128) / 128
+

@@ -144,7 +144,7 @@ def convert_png_to_ppm(img):
   for i in xrange(img.shape[0]):
     for j in xrange(img.shape[1]):
       new_img[i][j] = 255 * img[i][j][:3]
-  return new_img
+  return normalize_images(new_img)
 
 def test_real_images(x, y, prob, accuracy_operation, logits, conv1_x, conv2_x, saver):
   import matplotlib.image as mpimg
