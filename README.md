@@ -53,9 +53,11 @@ With this neural network architecture, along with other optimization, **the accu
 
 ## Training data preprocessing
 
-Data augmentation is required on more complex object recognition tasks. I achieved it by shifting the image to four directions, i.e. left, rigth, top and down. In addition, Images were shiftted with 1 pixel and 2 pixels, and therefore I increased the training data by 8x more. During the training processes, more data effectively effectively improved the final accurancy on the test dataset.
+1. Data Normalization. The input value for each pixel is in the range of [0-255]. I have converted them into [-1, 1] range by `(X - 128) / 128`. Ideally, I shall substract the mean to center the input to 0, and divide the value by the standard deviation of each pixel value. However, I made an assumption that the pixel value is evenly distributed across from 0 to 255, so I use simple normalization parameters for both training and testing data. The benefit is that my program doesn't have to "memorize" the special mean and deviation value generated from the training data, and apply them to the unknown test data.
 
-I also tried to convert the images to different color spaces, e.g. gray (32x32x1), HLS (32x32x3), and YUV (32x32x3), hoping for prediction accurancy improvement. However, these converted images weren't able to beat the original training dataset and so I gave up this technique in the final training model.
+2. Data augmentation is required on more complex object recognition tasks. I achieved it by shifting the image to four directions, i.e. left, rigth, top and down. In addition, Images were shiftted with 1 pixel and 2 pixels, and therefore I increased the training data by 8x more. During the training processes, more data effectively effectively improved the final accurancy on the test dataset.
+
+3. I also tried to convert the images to different color spaces, e.g. gray (32x32x1), HLS (32x32x3), and YUV (32x32x3), hoping for prediction accurancy improvement. However, these converted images weren't able to beat the original training dataset and so I gave up this technique in the final training model.
 
 ## Model Training and Optimization
 I am able to achieve the accuracy rate of 96.4% on test dataset and 98% on the validation dataset. Below are the optimization approaches incorporated in the final version.
@@ -101,9 +103,9 @@ I accquired 36 more German traffic sign images below from the web for evaluation
 <img src="test_images/0.png" width="32" /><img src="test_images/1.png" width="32" /><img src="test_images/10.png" width="32" /><img src="test_images/11.png" width="32" /><img src="test_images/12.png" width="32" /><img src="test_images/13.png" width="32" /><img src="test_images/14.png" width="32" /><img src="test_images/15.png" width="32" /><img src="test_images/16.png" width="32" /><img src="test_images/17.png" width="32" /><img src="test_images/18.png" width="32" /><img src="test_images/2.png" width="32" /><img src="test_images/21.png" width="32" /><img src="test_images/23.png" width="32" /><img src="test_images/25.png" width="32" /><img src="test_images/26.png" width="32" /><img src="test_images/29.png" width="32" /><img src="test_images/3.png" width="32" /><img src="test_images/30.png" width="32" /><img src="test_images/31.png" width="32" /><img src="test_images/32.png" width="32" /><img src="test_images/33.png" width="32" /><img src="test_images/34.png" width="32" /><img src="test_images/35.png" width="32" /><img src="test_images/36.png" width="32" /><img src="test_images/37.png" width="32" /><img src="test_images/38.png" width="32" /><img src="test_images/39.png" width="32" /><img src="test_images/4.png" width="32" /><img src="test_images/40.png" width="32" /><img src="test_images/42.png" width="32" /><img src="test_images/5.png" width="32" /><img src="test_images/6.png" width="32" /><img src="test_images/7.png" width="32" /><img src="test_images/8.png" width="32" /><img src="test_images/9.png" width="32" />
 
 ### Model Certainty - Softmax Probabilities
-Below are 5 new images along with the prediction, images generated from the output of the convolutional layers, and softmax Probabilities
+Below are 5 new images with some difficulties to classify along with the prediction, images generated from the output of the convolutional layers, and softmax Probabilities
 
-#### 1. "Speed limit (100km/h)" sign
+#### 1. "Speed limit (100km/h)" sign -- correct prediction
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
 |          | 0.894 (**correct**)| 0.105 (wrong)| 0.0002 (wrong)| 7.73e-05 (wrong)| 1.44e-05 (wrong)|
@@ -117,7 +119,7 @@ Output from the second Conv layer (higher level feature detection)
 
 <img src="test_images/conv_2_7.png" width="800" />
 
-#### 2. "Speed limit (60km/h)" sign
+#### 2. "Speed limit (60km/h)" sign -- incorrect prediction
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
 |          | 0.749 (wrong)| 0.0322 (wrong)| 0.02387 (wrong)| 0.0206 (wrong)| 0.0196 (**correct**)|
@@ -131,7 +133,7 @@ Output from the second Conv layer (higher level feature detection)
 
 <img src="test_images/conv_2_3.png" width="800" />
 
-#### 3. "General caution" sign
+#### 3. "General caution" sign -- correct prediction
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
 |          | 0.4206 (**correct**)| 0.1823 (wrong)| 0.0718 (wrong)| 0.0549 (wrong)| 0.0527 (wrong)|
@@ -145,7 +147,7 @@ Output from the second Conv layer (higher level feature detection)
 
 <img src="test_images/conv_2_7.png" width="800" />
 
-#### 4. "Road work" sign
+#### 4. "Road work" sign -- incorrect prediction
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
 |          | 0.4018 (wrong)| 0.3703 (wrong)| 0.1134 (wrong)| 0.0358 (**correct**)| 0.0332 (wrong)|
@@ -159,7 +161,7 @@ Output from the second Conv layer (higher level feature detection)
 
 <img src="test_images/conv_2_25.png" width="800" />
 
-#### 5. "Beware of ice/snow" sign
+#### 5. "Beware of ice/snow" sign -- incorrect prediction
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------------:|
 |          | 0.3555 (wrong)| 0.1520 (**correct**)| 0.1171 (wrong)| 0.08077 (wrong)| 0.0602 (wrong)|
