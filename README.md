@@ -141,11 +141,11 @@ Output from the second Conv layer (higher level feature detection)
 
 Output from the first Conv layer (edge and shape detection)
 
-<img src="test_images/conv_1_7.png" width="800" />
+<img src="test_images/conv_1_18.png" width="800" />
 
 Output from the second Conv layer (higher level feature detection)
 
-<img src="test_images/conv_2_7.png" width="800" />
+<img src="test_images/conv_2_18.png" width="800" />
 
 #### 4. "Road work" sign -- incorrect prediction
 | Original | Prediction 1	| Prediction 2 | Prediction 3 | Prediction 4 | Prediction 5 |
